@@ -8,14 +8,16 @@ alumnos = [
         {"nombre": "Juan", "apellido": "Pérez", "edad": 18, "curso": "Curso Python"},
         {"nombre": "Ana", "apellido": "García", "edad": 19, "curso": "Curso Python"},
         {"nombre": "Luis", "apellido": "Martínez", "edad": 17, "curso": "Curso Python"},
+        {"nombre": "Carla", "apellido": "Medina", "edad": 25, "curso": "Curso Python"}
     ]
 
 # Carga de cursos
 cursos = [
-        {(1, 117) : {"cantidad_alumnos": 30, "preceptor": "María"}},
-        {(2, 129) : {"cantidad_alumnos": 18, "preceptor": "Carlos"}},
-        {(3, 149) : {"cantidad_alumnos": 25, "preceptor": "María"}},
-    ]
+    {(1, 117): {"cantidad_alumnos": 30, "preceptor": "María"}},
+    {(2, 129): {"cantidad_alumnos": 18, "preceptor": "Carlos"}},
+    {(1, 149): {"cantidad_alumnos": 25, "preceptor": "María"}},
+    {(4, 289): {"cantidad_alumnos": 32, "preceptor": "Juan"}}
+]
 
 ejecutar = True
 while ejecutar == True:
@@ -32,8 +34,7 @@ while ejecutar == True:
         un determinado año.
         7- Nombre y apellido del alumno más jóven 
         y más grande del colegio.
-        8. Salir
-        
+        8. Salir  
     Elija una opción (1 al 8): """)
     numeros = ["1", "2", "3", "4", "5", "6", "7", "8"]
     while opcion not in numeros:
@@ -80,9 +81,13 @@ while ejecutar == True:
             preceptores_repetidos = repetidos(cursos)
             print(f"Los preceptores repetidos son: {preceptores_repetidos}")
         case "6":
-            pass
+            preceptores = preceptores_unico_anio(cursos)
+            print("Preceptores asignados a un único año:", preceptores)
         case "7":
-            pass
+            resultado = encontrar_joven_grande(alumnos)
+            # Imprimimos los resultados
+            print(f"Alumno más joven: {resultado['nombre_joven']}  {resultado['apellido_joven']} con edad {resultado['edad_joven']}")
+            print(f"Alumno más grande: {resultado['nombre_grande']} {resultado['apellido_grande']} con edad {resultado['edad_grande']}")
         case "8":
             print("Hasta luego!!")
             ejecutar = False
